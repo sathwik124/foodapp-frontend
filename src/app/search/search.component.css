@@ -16,10 +16,12 @@
     flex-wrap: wrap;
     gap: 30px;
     margin: 50px;
+    justify-content: center;
 }
 
 .example-card {
-    max-width: 400px;
+    padding: 10px;
+    max-width: 300px;
 }
 
 .example-card img {

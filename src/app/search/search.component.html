@@ -2,7 +2,7 @@
     <mat-form-field class="example-full-width">
         <mat-label>Search</mat-label>
         <input type="text" placeholder="search food" matInput [matAutocomplete]="auto" formControlName="item" [formControl]="searchControl">
-        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
+        <mat-autocomplete #auto="matAutocomplete">
             <mat-option *ngFor="let item of items" [value]="item">
                 {{item}}
             </mat-option>
@@ -10,7 +10,7 @@
     </mat-form-field>
 </form>
 <div class="foodies">
-    <div class="container" *ngFor="let food of food_items">
+    <div class="container" *ngFor="let food of filter_items">
         <mat-card class="example-card">
             <img [src]="food.pic" alt="{{food.name}}" mat-card-image>
             <mat-card-header><h1>{{food.name}}</h1></mat-card-header>

@@ -15,7 +15,7 @@ export class SearchComponent implements OnInit{
   items: string[] = [];
   food_items: food[] = [];
   searchControl: FormControl = new FormControl();
-  selected_item: food[] = [];
+  filter_items: food[] = [];
   constructor(private formBuilder: FormBuilder, private productService: ProductService) {
     this.myform = formBuilder.group({
       item: ['']
@@ -26,6 +26,7 @@ export class SearchComponent implements OnInit{
     this.productService.getfoods().subscribe(Response => {
       console.log(Response);
       this.food_items = Response;
+      this.filter_items = Response;
     });
 
     this.productService.getfoodnames().subscribe(Response => {
@@ -43,16 +44,16 @@ export class SearchComponent implements OnInit{
     });
   }
 
-  onOptionSelected(event: MatAutocompleteSelectedEvent): void {
-    const selectedProductName = event.option.value;
-    const selectedProduct = this.food_items.find(product => product.name === selectedProductName);
-    if (selectedProduct) {
-      console.log(selectedProduct);
-      this.selected_item.push(selectedProduct);
-    }
-  }
+  
   
   onSubmit() {
-    this.food_items = this.selected_item;
+    this.filter_items = this.filterfoods(this.searchControl.value);
+  }
+
+
+  filterfoods(searchTerm: string): food[] {
+    return this.food_items.filter(product => 
+      product.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
   }
 }

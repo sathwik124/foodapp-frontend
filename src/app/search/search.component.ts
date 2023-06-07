@@ -15,6 +15,7 @@ export class SearchComponent implements OnInit{
   items: string[] = [];
   food_items: food[] = [];
   searchControl: FormControl = new FormControl();
+  selected_item: food[] = [];
   constructor(private formBuilder: FormBuilder, private productService: ProductService) {
     this.myform = formBuilder.group({
       item: ['']
@@ -42,18 +43,16 @@ export class SearchComponent implements OnInit{
     });
   }
 
-  // onOptionSelected(event: MatAutocompleteSelectedEvent): void {
-  //   const selectedProductName = event.option.value;
-  //   const selectedProduct = this.food_items.find(product => product.name === selectedProductName);
-  //   if (selectedProduct) {
-  //     this.productService.getfooditem(selectedProduct.id).subscribe(Response => {
-  //       this.food_items = Response;
-  //     });
-  //   }
-  // }
-
-
-
-
-
+  onOptionSelected(event: MatAutocompleteSelectedEvent): void {
+    const selectedProductName = event.option.value;
+    const selectedProduct = this.food_items.find(product => product.name === selectedProductName);
+    if (selectedProduct) {
+      console.log(selectedProduct);
+      this.selected_item.push(selectedProduct);
+    }
+  }
+  
+  onSubmit() {
+    this.food_items = this.selected_item;
+  }
 }

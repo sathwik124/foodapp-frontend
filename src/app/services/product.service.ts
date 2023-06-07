@@ -15,8 +15,8 @@ export class ProductService {
     return this.http.get<food[]>(this.baseUrl);
   }
 
-  getfooditem(id: number): Observable<food> {
-    return this.http.get<food>(`${this.baseUrl}/${id}`);
+  getfooditem(id: number): Observable<food[]> {
+    return this.http.get<food[]>(`${this.baseUrl}/${id}`);
   }
 
   getfoodnames(): Observable<string[]> {

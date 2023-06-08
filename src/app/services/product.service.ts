@@ -45,4 +45,13 @@ export class ProductService {
   addtocart(citem: cartitem): Observable<cartitem> {
     return this.http.post<cartitem>(this.baseUrl2,citem,httpOptions);
   }
+
+  getcartitems(): Observable<cartitem[]> {
+    return this.http.get<cartitem[]>(this.baseUrl2);
+  }
+
+  deletecartitem(id: number): Observable<cartitem> {
+    return this.http.delete<cartitem>(`${this.baseUrl2}/${id}`);
+
+  }
 }

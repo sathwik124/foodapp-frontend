@@ -20,6 +20,7 @@ import { QuantdialogComponent } from './quantdialog/quantdialog.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { CarttableComponent } from './carttable/carttable.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { CarttableComponent } from './carttable/carttable.component';
     HttpClientModule,
     MatDialogModule,
     MatSnackBarModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

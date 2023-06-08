@@ -65,41 +65,5 @@
       "desc": "comes with corn toppings which is applied with mayonese and has mild salty taste"
     }
   ],
-  "cartitems": [
-    {
-      "id": 3,
-      "name": "Chicken pepporoni Pizza",
-      "quantity": 1,
-      "totprice": 359,
-      "tag": "pizza"
-    },
-    {
-      "id": 5,
-      "name": "Veg Manchuria",
-      "quantity": 2,
-      "totprice": 498,
-      "tag": "chinese"
-    },
-    {
-      "id": 1,
-      "name": "Veg Aloo Biryani",
-      "quantity": 2,
-      "totprice": 398,
-      "tag": "biryani"
-    },
-    {
-      "id": 7,
-      "name": "Paneer Pizza",
-      "quantity": 1,
-      "totprice": 459,
-      "tag": "pizza"
-    },
-    {
-      "id": 2,
-      "name": "Chicken Biryani",
-      "quantity": 2,
-      "totprice": 598,
-      "tag": "biryani"
-    }
-  ]
+  "cartitems": []
 }

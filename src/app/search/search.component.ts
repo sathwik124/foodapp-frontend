@@ -25,6 +25,7 @@ export class SearchComponent implements OnInit{
     id: 0,
     name: "x",
     quantity: 0,
+    price: 0,
     totprice: 0,
     tag: "y"
   };
@@ -71,6 +72,7 @@ export class SearchComponent implements OnInit{
         this.citem.quantity = result;
         this.citem.tag = item.tag;
         this.citem.totprice = result * item.price;
+        this.citem.price = item.price;
         this.productService.addtocart(this.citem).subscribe((Response) => {
           this.openAddedToCartSnackBar(Response);
         });

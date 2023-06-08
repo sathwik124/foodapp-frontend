@@ -1,0 +1,10 @@
+.cart-table {
+    padding: 20px;
+    background-color: palegoldenrod;
+}
+
+.disp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

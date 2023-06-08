@@ -1,13 +1,21 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { cartitem } from 'cartitem';
 import { food } from 'food';
 import { Observable, map } from 'rxjs';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+  }),
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
   private baseUrl = 'http://localhost:3000/foods';
+  private baseUrl2 = 'http://localhost:3000/cartitems';
 
   constructor(private http: HttpClient) { }
 
@@ -32,5 +40,9 @@ export class ProductService {
         return filteredData.map(item => item.name)
       })
     );
+  }
+
+  addtocart(citem: cartitem): Observable<cartitem> {
+    return this.http.post<cartitem>(this.baseUrl2,citem,httpOptions);
   }
 }

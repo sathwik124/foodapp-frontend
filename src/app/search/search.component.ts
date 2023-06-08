@@ -3,9 +3,10 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { food } from 'food';
 import { ProductService } from '../services/product.service';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
-import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatDialog } from '@angular/material/dialog';
 import { QuantdialogComponent } from '../quantdialog/quantdialog.component';
+import { cartitem } from 'cartitem';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -18,7 +19,14 @@ export class SearchComponent implements OnInit{
   food_items: food[] = [];
   searchControl: FormControl = new FormControl();
   filter_items: food[] = [];
-  constructor(private formBuilder: FormBuilder, private productService: ProductService, public dialog: MatDialog) {
+  citem: cartitem = {
+    id: 0,
+    name: "x",
+    quantity: 0,
+    totprice: 0,
+    tag: "y"
+  };
+  constructor(private formBuilder: FormBuilder, private productService: ProductService, public dialog: MatDialog, private snackBar: MatSnackBar) {
     this.myform = formBuilder.group({
       item: ['']
     });
@@ -54,9 +62,14 @@ export class SearchComponent implements OnInit{
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log('Selected quantity:', result);
-        console.log('selected product:', item.name);
-        
+        this.citem.id = item.id;
+        this.citem.name = item.name;
+        this.citem.quantity = result;
+        this.citem.tag = item.tag;
+        this.citem.totprice = result * item.price;
+        this.productService.addtocart(this.citem).subscribe((Response) => {
+          this.openAddedToCartSnackBar(Response);
+        });
       }
     });
   }
@@ -72,5 +85,11 @@ export class SearchComponent implements OnInit{
     return this.food_items.filter(product => 
       product.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
+  }
+
+  openAddedToCartSnackBar(response: any) {
+    this.snackBar.open(response.name, 'added to cart', {
+      duration: 3000
+    });
   }
 }

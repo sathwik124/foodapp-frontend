@@ -17,9 +17,9 @@
             <mat-card-content><h3>Price: ₹{{food.price}}/-</h3></mat-card-content>
             <mat-card-footer>
                 <mat-card-actions>
-                    <button mat-raised-button color="primary">
+                    <button mat-raised-button (click)="openDialog(food)" color="primary">
                         <mat-icon>shopping_cart</mat-icon>
-                        Order Now
+                        Add Item
                     </button>
                     <button mat-button>
                         <mat-icon>info</mat-icon>

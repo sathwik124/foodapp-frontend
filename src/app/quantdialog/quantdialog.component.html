@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Add no.of Items</h2>
+<mat-dialog-content>
+  <div class="spec">
+    <button mat-icon-button color="warn" (click)="decrementQuantity()">
+      <mat-icon>remove</mat-icon>
+    </button>
+    <span style="color: black;">{{ quantity }}</span>
+    <button mat-icon-button color="primary" (click)="incrementQuantity()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="quantity">OK</button>
+  <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

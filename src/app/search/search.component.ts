@@ -4,6 +4,8 @@ import { food } from 'food';
 import { ProductService } from '../services/product.service';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { MatDialog } from '@angular/material/dialog';
+import { QuantdialogComponent } from '../quantdialog/quantdialog.component';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -16,7 +18,7 @@ export class SearchComponent implements OnInit{
   food_items: food[] = [];
   searchControl: FormControl = new FormControl();
   filter_items: food[] = [];
-  constructor(private formBuilder: FormBuilder, private productService: ProductService) {
+  constructor(private formBuilder: FormBuilder, private productService: ProductService, public dialog: MatDialog) {
     this.myform = formBuilder.group({
       item: ['']
     });
@@ -41,6 +43,21 @@ export class SearchComponent implements OnInit{
       this.productService.getrecommendedfood(searchTerm).subscribe(recommendedNames => {
         this.items = recommendedNames;
       });
+    });
+  }
+
+  openDialog(item: food): void {
+    const dialogRef = this.dialog.open(QuantdialogComponent, {
+      width: '250px',
+      data: { quantity: 0 }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Selected quantity:', result);
+        console.log('selected product:', item.name);
+        
+      }
     });
   }
 

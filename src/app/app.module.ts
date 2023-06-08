@@ -18,13 +18,16 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { QuantdialogComponent } from './quantdialog/quantdialog.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { CarttableComponent } from './carttable/carttable.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     SearchComponent,
-    QuantdialogComponent
+    QuantdialogComponent,
+    CarttableComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatCardModule,
     HttpClientModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

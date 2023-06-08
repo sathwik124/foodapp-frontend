@@ -10,7 +10,7 @@
     </mat-form-field>
 </form>
 <div class="foodies">
-    <div class="container" *ngFor="let food of filter_items">
+    <div class="container" *ngFor="let food of filter_items; let i = index">
         <mat-card class="example-card">
             <img [src]="food.pic" alt="{{food.name}}" mat-card-image>
             <mat-card-header><h1>{{food.name}}</h1></mat-card-header>
@@ -21,11 +21,21 @@
                         <mat-icon>shopping_cart</mat-icon>
                         Add Item
                     </button>
-                    <button mat-button>
+                    <button mat-button (click)="togglePanel(i)">
                         <mat-icon>info</mat-icon>
                         more info
                     </button>
                 </mat-card-actions>
+                <mat-accordion [hidden]="ishide(i)">
+                    <mat-expansion-panel [expanded]="isExpanded(i)">
+                      <mat-expansion-panel-header>
+                        <mat-panel-description>
+                          description
+                        </mat-panel-description>
+                      </mat-expansion-panel-header>
+                      {{food.desc}}
+                    </mat-expansion-panel>
+                </mat-accordion>
             </mat-card-footer>
         </mat-card>
     </div>

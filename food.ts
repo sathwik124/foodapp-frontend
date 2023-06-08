@@ -4,4 +4,5 @@ export interface food {
     pic: string;
     price: number;
     tag: string;
+    desc: string;
 }

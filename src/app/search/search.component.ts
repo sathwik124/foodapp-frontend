@@ -19,6 +19,8 @@ export class SearchComponent implements OnInit{
   food_items: food[] = [];
   searchControl: FormControl = new FormControl();
   filter_items: food[] = [];
+  expanded: boolean[] = [];
+  hide: boolean[] = [];
   citem: cartitem = {
     id: 0,
     name: "x",
@@ -37,6 +39,8 @@ export class SearchComponent implements OnInit{
       console.log(Response);
       this.food_items = Response;
       this.filter_items = Response;
+      this.expanded = new Array<boolean>(this.food_items.length).fill(false);
+      this.hide = new Array<boolean>(this.food_items.length).fill(true);
     });
 
     this.productService.getfoodnames().subscribe(Response => {
@@ -74,8 +78,20 @@ export class SearchComponent implements OnInit{
     });
   }
 
-  
-  
+  isExpanded(index: number): boolean {
+    return this.expanded[index];
+
+  }
+
+  ishide(index: number): boolean {
+    return this.hide[index];
+  }
+
+  togglePanel(index: number): void {
+    this.expanded[index] = !this.expanded[index];
+    this.hide[index] = !this.hide[index];
+  }
+
   onSubmit() {
     this.filter_items = this.filterfoods(this.searchControl.value);
   }

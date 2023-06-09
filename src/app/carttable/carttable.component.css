@@ -8,3 +8,19 @@
     justify-content: center;
     align-items: center;
 }
+
+.ex-card {
+    width: 300px;
+    height: 200px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px;
+}
+
+mat-card-content {
+    padding: 15px;
+}

@@ -21,6 +21,8 @@ export class SearchComponent implements OnInit{
   filter_items: food[] = [];
   expanded: boolean[] = [];
   hide: boolean[] = [];
+  options: string[] = ["All", "Biryani", "Pizza", "Chinese"];
+  selectedopt: string = "";
   citem: cartitem = {
     id: 0,
     name: "x",
@@ -96,6 +98,22 @@ export class SearchComponent implements OnInit{
 
   onSubmit() {
     this.filter_items = this.filterfoods(this.searchControl.value);
+  }
+
+  onchipselect(event: any) {
+    this.selectedopt = event.source.value;
+    if(this.selectedopt == "All"){
+      this.filter_items = this.food_items;
+    }
+    else {
+      this.filter_items = this.filterfooditems(this.selectedopt);
+    }
+  }
+
+  filterfooditems(searchTerm: string): food[] {
+    return this.food_items.filter(product =>
+      product.tag.toLowerCase().includes(searchTerm.toLowerCase())
+    );
   }
 
 

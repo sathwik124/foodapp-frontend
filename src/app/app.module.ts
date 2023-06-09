@@ -22,6 +22,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { CarttableComponent } from './carttable/carttable.component';
 import { MatTableModule } from '@angular/material/table';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatChipsModule } from '@angular/material/chips'
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatSnackBarModule,
     MatExpansionModule,
     MatTableModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

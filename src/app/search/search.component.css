@@ -28,3 +28,14 @@
     width: 100%;
     height: 200px;
 }
+
+.cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+}
+
+.centered {
+    text-align: center;
+}

@@ -1,36 +1,35 @@
-<div class="container vh-100" style="width: 400px;">
-    <div class="row justify-content-center h-100">
-        <div class="card my-auto shadow">
-            <div class="card-body p-5">
-                <div class=" d-flex flex-row justify-content-center align-items-center text-center">
-                    <span><mat-icon>lunch_dining</mat-icon></span>
-                    <span><h1>Foodie Go</h1></span>
-                </div>
-                <div class="text-center">
-                    <mat-icon>lock</mat-icon>
-                </div>
-                <div class="text-center">
-                    <h2>SignUp</h2>
-                </div>
-                <form [formGroup]="signupForm" (ngSubmit)="onsubmit()">
-                    <div class="form-group">
-                        <input type="text" id="username" placeholder="Username" class="form-control" formControlName="username"
-                            name="username" />
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" placeholder="Email" class="form-control" formControlName="email"
-                            name="email" />
-                    </div>
-                    <div class="form-group">
-                        <input type="password" id="password" placeholder="Password" class="form-control"
-                            formControlName="password" name="password" />
-                    </div>
-                    <input type="submit" class="btn btn-primary w-100" value="SignUp" name="">
-                </form>
-            </div>
-            <div class="card-footer text-right">
-                <small>Already have an account? <a routerLink="../login">Login</a></small>
-            </div>
-        </div>
-    </div>
-</div>
+<div class="container">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>
+                <mat-icon>lunch_dining</mat-icon>
+                Foodie Go
+            </mat-card-title>
+          <mat-card-title>SignUp</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form [formGroup]="signupForm" (ngSubmit)="onsubmit()">
+            <mat-form-field appearance="outline">
+                <mat-label>Username</mat-label>
+                <input matInput formControlName="username" type="text" required>
+                <mat-error *ngIf="signupForm.controls.username.hasError('required')">Username is required</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" type="email" required>
+              <mat-error *ngIf="signupForm.controls.email.hasError('required')">Email is required</mat-error>
+              <mat-error *ngIf="signupForm.controls.email.hasError('email')">Invalid email</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input matInput formControlName="password" type="password" required>
+              <mat-error *ngIf="signupForm.controls.password.hasError('required')">Password is required</mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="primary" type="submit" [disabled]="signupForm.invalid">SignUp</button>
+          </form>
+        </mat-card-content>
+        <mat-card-footer>
+            <h4>Already have an account? <a routerLink="../login">Login</a></h4>
+        </mat-card-footer>
+    </mat-card>
+</div>  

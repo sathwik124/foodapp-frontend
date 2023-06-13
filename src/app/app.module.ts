@@ -24,6 +24,8 @@ import { MatTableModule } from '@angular/material/table';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatBadgeModule } from '@angular/material/badge';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { MatBadgeModule } from '@angular/material/badge';
     NavbarComponent,
     SearchComponent,
     QuantdialogComponent,
-    CarttableComponent
+    CarttableComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

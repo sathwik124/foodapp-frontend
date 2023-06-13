@@ -2,7 +2,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { cartitem } from 'cartitem';
 import { food } from 'food';
-import { Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -16,6 +16,8 @@ const httpOptions = {
 export class ProductService {
   private baseUrl = 'http://localhost:3000/foods';
   private baseUrl2 = 'http://localhost:3000/cartitems';
+  private cartcountsub = new BehaviorSubject<number>(0);
+  cartcount$ = this.cartcountsub.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -53,5 +55,9 @@ export class ProductService {
   deletecartitem(id: number): Observable<cartitem> {
     return this.http.delete<cartitem>(`${this.baseUrl2}/${id}`);
 
+  }
+
+  updatecartcount(count: number) {
+    this.cartcountsub.next(count);
   }
 }

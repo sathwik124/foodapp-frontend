@@ -31,6 +31,7 @@ export class SearchComponent implements OnInit{
     totprice: 0,
     tag: "y"
   };
+  cCount: number = 0;
   constructor(private formBuilder: FormBuilder, private productService: ProductService, public dialog: MatDialog, private snackBar: MatSnackBar) {
     this.myform = formBuilder.group({
       item: ['']
@@ -44,6 +45,9 @@ export class SearchComponent implements OnInit{
       this.filter_items = Response;
       this.expanded = new Array<boolean>(this.food_items.length).fill(false);
       this.hide = new Array<boolean>(this.food_items.length).fill(true);
+      this.productService.cartcount$.subscribe( res => {
+        this.cCount = res;
+      })
     });
 
     this.productService.getfoodnames().subscribe(Response => {
@@ -78,6 +82,7 @@ export class SearchComponent implements OnInit{
         this.productService.addtocart(this.citem).subscribe((Response) => {
           this.openAddedToCartSnackBar(Response);
         });
+        this.productService.updatecartcount(this.cCount+1);
       }
     });
   }

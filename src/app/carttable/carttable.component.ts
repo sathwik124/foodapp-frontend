@@ -22,6 +22,7 @@ export class CarttableComponent implements OnInit{
     totprice: 0,
     tag: "x"
   }
+  cartcount: number = 0;
 
   constructor(private productService: ProductService) {}
 
@@ -29,6 +30,7 @@ export class CarttableComponent implements OnInit{
     this.productService.getcartitems().subscribe((Response) => {
       this.citems = Response;
       this.dataSource = new MatTableDataSource<cartitem>(this.citems);
+      this.updatecartlength();
       console.log(Response);
       for( let i=0; i < this.citems.length; i++){
         this.total_price+=this.citems[i].totprice;
@@ -36,11 +38,17 @@ export class CarttableComponent implements OnInit{
     })
   }
 
+  updatecartlength() {
+    this.cartcount = this.citems.length;
+    this.productService.updatecartcount(this.cartcount);
+  }
+
   removeFromCart(item: cartitem) {
     this.productService.deletecartitem(item.id).subscribe();
     this.citems = this.citems.filter((cartItem) => cartItem.id !== item.id);
     this.dataSource.data = this.citems;
     this.total_price-=item.totprice;
+    this.updatecartlength();
   }
 
   checkoutcart() {
@@ -50,5 +58,6 @@ export class CarttableComponent implements OnInit{
     }
     this.dataSource.data = this.citems;
     this.total_price = 0;
+    this.updatecartlength();
   }
 }

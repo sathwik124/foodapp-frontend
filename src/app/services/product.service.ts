@@ -14,8 +14,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ProductService {
-  private baseUrl = 'http://localhost:3000/foods';
-  private baseUrl2 = 'http://localhost:3000/cartitems';
+  private baseUrl = 'http://127.0.0.1:8000/api/';
   private cartcountsub = new BehaviorSubject<number>(0);
   cartcount$ = this.cartcountsub.asObservable();
 
@@ -26,7 +25,7 @@ export class ProductService {
   }
 
   getfooditem(id: number): Observable<food[]> {
-    return this.http.get<food[]>(`${this.baseUrl}/${id}`);
+    return this.http.get<food[]>(this.baseUrl+'getc/'+`${id}`);
   }
 
   getfoodnames(): Observable<string[]> {
@@ -45,15 +44,15 @@ export class ProductService {
   }
 
   addtocart(citem: cartitem): Observable<cartitem> {
-    return this.http.post<cartitem>(this.baseUrl2,citem,httpOptions);
+    return this.http.post<cartitem>(this.baseUrl+'add/',citem,httpOptions);
   }
 
   getcartitems(): Observable<cartitem[]> {
-    return this.http.get<cartitem[]>(this.baseUrl2);
+    return this.http.get<cartitem[]>(this.baseUrl+'get/');
   }
 
   deletecartitem(id: number): Observable<cartitem> {
-    return this.http.delete<cartitem>(`${this.baseUrl2}/${id}`);
+    return this.http.delete<cartitem>(this.baseUrl+'delete/'+`${id}`);
 
   }
 

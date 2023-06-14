@@ -15,7 +15,7 @@ export class CarttableComponent implements OnInit{
   citems: cartitem[] = [];
   total_price: number = 0;
   item: cartitem = {
-    id: 0,
+    cid: 0,
     name: "x",
     quantity: 0,
     price: 0,
@@ -44,8 +44,8 @@ export class CarttableComponent implements OnInit{
   }
 
   removeFromCart(item: cartitem) {
-    this.productService.deletecartitem(item.id).subscribe();
-    this.citems = this.citems.filter((cartItem) => cartItem.id !== item.id);
+    this.productService.deletecartitem(item.cid).subscribe();
+    this.citems = this.citems.filter((cartItem) => cartItem.cid !== item.cid);
     this.dataSource.data = this.citems;
     this.total_price-=item.totprice;
     this.updatecartlength();
@@ -53,7 +53,7 @@ export class CarttableComponent implements OnInit{
 
   checkoutcart() {
     for( let i=this.citems.length-1; i >= 0; i--) {
-      this.productService.deletecartitem(this.citems[i].id).subscribe();
+      this.productService.deletecartitem(this.citems[i].cid).subscribe();
       this.citems.pop();
     }
     this.dataSource.data = this.citems;

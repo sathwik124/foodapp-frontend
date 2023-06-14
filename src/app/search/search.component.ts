@@ -24,7 +24,7 @@ export class SearchComponent implements OnInit{
   options: string[] = ["All", "Biryani", "Pizza", "Chinese"];
   selectedopt: string = "";
   citem: cartitem = {
-    id: 0,
+    cid: 0,
     name: "x",
     quantity: 0,
     price: 0,
@@ -73,7 +73,7 @@ export class SearchComponent implements OnInit{
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.citem.id = item.id;
+        this.citem.cid = item.fid;
         this.citem.name = item.name;
         this.citem.quantity = result;
         this.citem.tag = item.tag;

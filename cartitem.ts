@@ -1,5 +1,5 @@
 export interface cartitem {
-    id: number;
+    cid: number;
     name: string;
     quantity: number;
     price: number;

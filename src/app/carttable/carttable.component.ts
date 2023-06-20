@@ -3,6 +3,7 @@ import { cartitem } from 'cartitem';
 import { ProductService } from '../services/product.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { DataSource } from '@angular/cdk/collections';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-carttable',
@@ -24,9 +25,12 @@ export class CarttableComponent implements OnInit{
   }
   cartcount: number = 0;
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private router: Router) {}
 
   ngOnInit(): void {
+    if(!localStorage.getItem('user')) {
+      this.router.navigate(['/login']);
+    }
     this.productService.getcartitems().subscribe((Response) => {
       this.citems = Response;
       this.dataSource = new MatTableDataSource<cartitem>(this.citems);

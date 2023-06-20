@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -10,10 +12,13 @@ export class NavbarComponent implements OnInit{
 
   cartcount: number = 0;
 
-  constructor(private productService: ProductService) {}
+  username: any;
+
+  constructor(private productService: ProductService, private auth: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.getcartcount();
+    this.getuser();
   }
 
   getcartcount() {
@@ -22,4 +27,19 @@ export class NavbarComponent implements OnInit{
     })
   }
 
+  logout() {
+    //  console.log("clicked logout");
+    //  this.auth.logout().subscribe(Response => {
+    //   console.log(Response);
+    //  });
+    localStorage.removeItem('user');
+    this.router.navigate(['/login']);
+  }
+  
+  getuser() {
+    // this.auth.getusername().subscribe(Response => {
+    //   this.username = Response.username;
+    // })
+    this.username = localStorage.getItem('user')?.slice(1,length-1);
+  }
 }

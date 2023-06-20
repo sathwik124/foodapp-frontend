@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { QuantdialogComponent } from '../quantdialog/quantdialog.component';
 import { cartitem } from 'cartitem';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -32,13 +33,16 @@ export class SearchComponent implements OnInit{
     tag: "y"
   };
   cCount: number = 0;
-  constructor(private formBuilder: FormBuilder, private productService: ProductService, public dialog: MatDialog, private snackBar: MatSnackBar) {
+  constructor(private formBuilder: FormBuilder, private productService: ProductService, public dialog: MatDialog, private snackBar: MatSnackBar, private router: Router) {
     this.myform = formBuilder.group({
       item: ['']
     });
   }
 
   ngOnInit(): void {
+    if(!localStorage.getItem('user')) {
+      this.router.navigate(['/login']);
+    }
     this.productService.getfoods().subscribe(Response => {
       console.log(Response);
       this.food_items = Response;

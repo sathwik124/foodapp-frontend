@@ -4,6 +4,7 @@ import { SearchComponent } from './search/search.component';
 import { CarttableComponent } from './carttable/carttable.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { authGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},

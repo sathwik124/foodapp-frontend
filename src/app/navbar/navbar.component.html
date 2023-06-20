@@ -4,6 +4,7 @@
     </button>
     <span>Foodie Go</span>
     <span class="spacer"></span>
+    <span>{{username}}</span>
     <button routerLink="/home" mat-button>
         <mat-icon>home</mat-icon>
         Home
@@ -12,7 +13,7 @@
         <mat-icon matBadge="{{cartcount}}" matBadgeColor="warn">shopping_cart</mat-icon>
         Cart
     </button>
-    <button mat-raised-button color="warn">
+    <button (click)="logout()" mat-raised-button color="warn">
         <mat-icon>lock_open</mat-icon>
         Logout
     </button>

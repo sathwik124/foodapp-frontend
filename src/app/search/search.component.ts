@@ -6,8 +6,8 @@ import { debounceTime, distinctUntilChanged } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { QuantdialogComponent } from '../quantdialog/quantdialog.component';
 import { cartitem } from 'cartitem';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -25,6 +25,7 @@ export class SearchComponent implements OnInit{
   options: string[] = ["All", "Biryani", "Pizza", "Chinese"];
   selectedopt: string = "";
   citem: cartitem = {
+    userid: "",
     cid: 0,
     name: "x",
     quantity: 0,
@@ -33,7 +34,7 @@ export class SearchComponent implements OnInit{
     tag: "y"
   };
   cCount: number = 0;
-  constructor(private formBuilder: FormBuilder, private productService: ProductService, public dialog: MatDialog, private snackBar: MatSnackBar, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private productService: ProductService, public dialog: MatDialog, private router: Router, private toastr: ToastrService) {
     this.myform = formBuilder.group({
       item: ['']
     });
@@ -77,6 +78,7 @@ export class SearchComponent implements OnInit{
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+        this.citem.userid = localStorage.getItem('userid');
         this.citem.cid = item.fid;
         this.citem.name = item.name;
         this.citem.quantity = result;
@@ -133,8 +135,6 @@ export class SearchComponent implements OnInit{
   }
 
   openAddedToCartSnackBar(response: any) {
-    this.snackBar.open(response.name, 'added to cart', {
-      duration: 3000
-    });
+    this.toastr.success(response.name+' Added to Cart', 'Success');
   }
 }

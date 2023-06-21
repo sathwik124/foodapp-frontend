@@ -1,35 +1,42 @@
-<div class="container">
-    <mat-card>
-        <mat-card-header>
-            <mat-card-title>
-                <mat-icon>lunch_dining</mat-icon>
-                Foodie Go
-            </mat-card-title>
-          <mat-card-title>SignUp</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <form [formGroup]="signupForm" (ngSubmit)="onsubmit()">
-            <mat-form-field appearance="outline">
-                <mat-label>Username</mat-label>
-                <input matInput formControlName="username" type="text" required>
-                <mat-error *ngIf="signupForm.controls['username'].hasError('required')">Username is required</mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-              <mat-label>Email</mat-label>
-              <input matInput formControlName="email" type="email" required>
-              <mat-error *ngIf="signupForm.controls['email'].hasError('required')">Email is required</mat-error>
-              <mat-error *ngIf="signupForm.controls['email'].hasError('email')">Invalid email</mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-              <mat-label>Password</mat-label>
-              <input matInput formControlName="password" type="password" required>
-              <mat-error *ngIf="signupForm.controls['password'].hasError('required')">Password is required</mat-error>
-            </mat-form-field>
-            <button mat-raised-button color="primary" type="submit" [disabled]="signupForm.invalid">SignUp</button>
-          </form>
-        </mat-card-content>
-        <mat-card-footer>
-            <h4>Already have an account? <a routerLink="../login">Login</a></h4>
-        </mat-card-footer>
-    </mat-card>
+<div class="head">
+  <div><mat-icon id="icon-img">lunch_dining</mat-icon></div>
+  <h1>Foodie Go</h1>
+</div>
+
+<div class="cont">
+  <div class="giphy">
+    <img src="../../assets/del.gif" alt="del">
+  </div>
+  
+  <div class="container">
+      <mat-card>
+          <mat-card-header>
+            <mat-card-title id="login">SignUp</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <form [formGroup]="signupForm" (ngSubmit)="onsubmit()">
+              <mat-form-field appearance="outline">
+                  <mat-label>Username</mat-label>
+                  <input matInput formControlName="username" type="text" required>
+                  <mat-error *ngIf="signupForm.controls['username'].hasError('required')">Username is required</mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" type="email" required>
+                <mat-error *ngIf="signupForm.controls['email'].hasError('required')">Email is required</mat-error>
+                <mat-error *ngIf="signupForm.controls['email'].hasError('email')">Invalid email</mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="password" type="password" required>
+                <mat-error *ngIf="signupForm.controls['password'].hasError('required')">Password is required</mat-error>
+              </mat-form-field>
+              <button mat-raised-button color="primary" type="submit" [disabled]="signupForm.invalid">SignUp</button>
+            </form>
+          </mat-card-content>
+          <mat-card-footer>
+              <h4>Already have an account? <a routerLink="../login">Login</a></h4>
+          </mat-card-footer>
+      </mat-card>
+  </div>
 </div>  

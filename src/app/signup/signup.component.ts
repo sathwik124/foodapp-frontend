@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signup',
@@ -12,7 +13,7 @@ export class SignupComponent implements OnInit{
 
   signupForm: FormGroup;
   
-  constructor(private auth: AuthService, private router: Router) {
+  constructor(private auth: AuthService, private router: Router, private toastr: ToastrService) {
     this.signupForm = new FormGroup({
       username: new FormControl(''),
       email: new FormControl(''),
@@ -35,9 +36,10 @@ export class SignupComponent implements OnInit{
         (result) => {
           console.log(result);
           this.router.navigate(['/login']);
+          this.toastr.success('Account has been created!!', 'Success');
         },
         (err: Error) => {
-          alert(err.message);
+          this.toastr.error(err.message, 'Error');
         }
       );
     }

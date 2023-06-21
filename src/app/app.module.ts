@@ -26,6 +26,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatBadgeModule } from '@angular/material/badge';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
   declarations: [
@@ -58,7 +60,8 @@ import { SignupComponent } from './signup/signup.component';
     MatTableModule,
     FlexLayoutModule,
     MatChipsModule,
-    MatBadgeModule
+    MatBadgeModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

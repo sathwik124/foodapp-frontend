@@ -47,8 +47,8 @@ export class ProductService {
     return this.http.post<cartitem>(this.baseUrl+'add/',citem,httpOptions);
   }
 
-  getcartitems(): Observable<cartitem[]> {
-    return this.http.get<cartitem[]>(this.baseUrl+'get/');
+  getcartitems(uid: string|null): Observable<cartitem[]> {
+    return this.http.get<cartitem[]>(this.baseUrl+'get/'+`${uid}`);
   }
 
   deletecartitem(id: number): Observable<cartitem> {

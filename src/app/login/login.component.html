@@ -1,29 +1,37 @@
-<div class="container">
-    <mat-card>
-        <mat-card-header>
-            <mat-card-title>
-                <mat-icon>lunch_dining</mat-icon>
-                Foodie Go
-            </mat-card-title>
-          <mat-card-title>Login</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-            <mat-form-field appearance="outline">
-              <mat-label>UserName</mat-label>
-              <input matInput formControlName="username" type="text" required>
-              <mat-error *ngIf="loginForm.controls['username'].hasError('required')">UserName is required</mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-              <mat-label>Password</mat-label>
-              <input matInput formControlName="password" type="password" required>
-              <mat-error *ngIf="loginForm.controls['password'].hasError('required')">Password is required</mat-error>
-            </mat-form-field>
-            <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Login</button>
-          </form>
-        </mat-card-content>
-        <mat-card-footer>
-            <h4>Don't have an account? <a routerLink="../signup">SignUp</a></h4>
-        </mat-card-footer>
-    </mat-card>
+<div class="head">
+  <mat-icon>lunch_dining</mat-icon>
+  <h1>Foodie Go</h1>
+</div>
+
+<div class="cont">
+  <div class="giphy">
+    <img src="../../assets/del.gif" alt="del">
+  </div>
+  
+  <div class="container">
+      <mat-card>
+          <mat-card-header>
+            <mat-card-title id="login">Login</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <mat-form-field appearance="outline">
+                <mat-label>UserName</mat-label>
+                <input matInput formControlName="username" type="text" required>
+                <mat-error *ngIf="loginForm.controls['username'].hasError('required')">UserName is required</mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="password" type="password" required>
+                <mat-error *ngIf="loginForm.controls['password'].hasError('required')">Password is required</mat-error>
+              </mat-form-field>
+              <br>
+              <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Login</button>
+            </form>
+          </mat-card-content>
+          <mat-card-footer>
+              <h4>Don't have an account? <a routerLink="../signup">SignUp</a></h4>
+          </mat-card-footer>
+      </mat-card>
+  </div>
 </div>  

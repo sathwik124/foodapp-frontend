@@ -1,10 +1,64 @@
-:host {
+/* :host {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-  }
-  
+  } */
+
+.cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+}
+
+.head h1 {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 0.5%;
+  font-size: 50px;
+}
+
 .container {
-  width: 400px;
+  width: 35%;
+}
+
+.giphy {
+  margin-right: 15%;
+}
+
+.giphy img {
+  border-radius: 20px;
+  width: 130%;
+  height: 130%;
+}
+
+mat-card {
+  background-color: whitesmoke;
+}
+
+mat-card-content{
+  margin-left:20%;
+}
+
+mat-card-footer{
+  margin-left:22%;
+  margin-top:2%;
+}
+
+#login{
+  margin-left:315%;
+  margin-bottom:15%;
+  font-weight: bold;
+}
+
+.head h1 {
+  font-weight: bold;
 }

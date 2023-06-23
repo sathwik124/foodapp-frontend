@@ -39,3 +39,59 @@
 .centered {
     text-align: center;
 }
+
+.banner img {
+    width: 100%;
+}
+
+footer {
+    background-color: darkblue;
+    color: white;
+    padding: 20px;
+  }
+
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .footer-links {
+    margin-bottom: 10px;
+  }
+
+  .footer-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+
+  .footer-social {
+    margin-bottom: 10px;
+  }
+
+  .footer-social a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+
+  .footer-legal {
+    font-size: 12px;
+    border-top: 1px solid white;
+    padding-top: 10px;
+  }
+
+  .footer-address {
+    margin-bottom: 10px;
+  }
+  .footer-address li {
+    list-style: none;
+  }

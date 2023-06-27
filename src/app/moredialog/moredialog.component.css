@@ -1,0 +1,28 @@
+img {
+    height: 100%;
+    width: 100%;
+}
+
+.pic {
+    height: 100%;
+    width: 50%;
+}
+
+.container {
+    display: flex;
+}
+
+.content {
+    height: 100%;
+    width: 50%;
+    padding: 15px;
+}
+
+.content h1 {
+    font-weight: bold;
+    text-align: center;
+}
+
+.content p {
+    font-weight: 500;
+}

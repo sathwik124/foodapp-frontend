@@ -1,7 +1,14 @@
 <div class="banner">
     <img src="https://bucketbiryani.com/wp-content/uploads/2020/02/slider_1-1.jpg" alt="">
+    <div class="title">
+      <p>We provide different varieties of foods from different varieties of cuisines</p>
+      <button mat-raised-button color="primary" (click)="scrollToSection()">
+        <mat-icon>explore</mat-icon>
+        Explore
+      </button>
+    </div>
 </div>
-<form [formGroup]="myform" class="example-form" (ngSubmit)="onSubmit()">
+<form id="main" [formGroup]="myform" class="example-form" (ngSubmit)="onSubmit()">
     <mat-form-field class="example-full-width">
         <mat-label>Search</mat-label>
         <input type="text" placeholder="search food" matInput [matAutocomplete]="auto" formControlName="item" [formControl]="searchControl">
@@ -34,12 +41,16 @@
                         <mat-icon>shopping_cart</mat-icon>
                         Add Item
                     </button>
-                    <button mat-button (click)="togglePanel(i)">
+                    <!-- <button mat-button (click)="togglePanel(i)">
                         <mat-icon>info</mat-icon>
                         more info
+                    </button> -->
+                    <button mat-button (click)="openmore(food)">
+                      <mat-icon>info</mat-icon>
+                      more info
                     </button>
                 </mat-card-actions>
-                <mat-accordion [hidden]="ishide(i)">
+                <!-- <mat-accordion [hidden]="ishide(i)">
                     <mat-expansion-panel [expanded]="isExpanded(i)">
                       <mat-expansion-panel-header>
                         <mat-panel-description>
@@ -48,7 +59,7 @@
                       </mat-expansion-panel-header>
                       {{food.desc}}
                     </mat-expansion-panel>
-                </mat-accordion>
+                </mat-accordion> -->
             </mat-card-footer>
         </mat-card>
     </div>
@@ -58,10 +69,10 @@
     <div class="footer-content">
       <div class="footer-logo">Foodie Go</div>
       <div class="footer-links">
-        <a href="#">Home</a>
-        <a href="#">Menu</a>
-        <a href="#">About Us</a>
-        <a href="#">Contact</a>
+        <a routerLink="#">Home</a>
+        <a routerLink="#">Menu</a>
+        <a routerLink="#">About Us</a>
+        <a routerLink="#">Contact</a>
       </div>
       <div class="footer-address">
         <h2>Contact Us</h2>

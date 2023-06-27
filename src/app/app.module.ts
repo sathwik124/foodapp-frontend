@@ -27,6 +27,8 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ToastrModule } from 'ngx-toastr';
+import { MoredialogComponent } from './moredialog/moredialog.component';
+import { StarRatingModule } from 'angular-star-rating';
 
 
 @NgModule({
@@ -37,7 +39,8 @@ import { ToastrModule } from 'ngx-toastr';
     QuantdialogComponent,
     CarttableComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    MoredialogComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +64,7 @@ import { ToastrModule } from 'ngx-toastr';
     FlexLayoutModule,
     MatChipsModule,
     MatBadgeModule,
+    StarRatingModule.forRoot(),
     ToastrModule.forRoot()
   ],
   providers: [],

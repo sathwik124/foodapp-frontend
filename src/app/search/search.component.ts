@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { food } from 'food';
 import { ProductService } from '../services/product.service';
@@ -8,6 +8,7 @@ import { QuantdialogComponent } from '../quantdialog/quantdialog.component';
 import { cartitem } from 'cartitem';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { MoredialogComponent } from '../moredialog/moredialog.component';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -34,7 +35,7 @@ export class SearchComponent implements OnInit{
     tag: "y"
   };
   cCount: number = 0;
-  constructor(private formBuilder: FormBuilder, private productService: ProductService, public dialog: MatDialog, private router: Router, private toastr: ToastrService) {
+  constructor(private formBuilder: FormBuilder, private productService: ProductService, public dialog: MatDialog, private router: Router, private toastr: ToastrService, private elementRef: ElementRef) {
     this.myform = formBuilder.group({
       item: ['']
     });
@@ -93,19 +94,29 @@ export class SearchComponent implements OnInit{
     });
   }
 
-  isExpanded(index: number): boolean {
-    return this.expanded[index];
-
+  openmore(item: food): void {
+    const dialogRef = this.dialog.open(MoredialogComponent,{
+      width: '650px',
+      data: { imgsrc: item.pic,
+              product_title: item.name,
+              desc: item.desc,
+              rating: 5 }
+    });
   }
 
-  ishide(index: number): boolean {
-    return this.hide[index];
-  }
+  // isExpanded(index: number): boolean {
+  //   return this.expanded[index];
 
-  togglePanel(index: number): void {
-    this.expanded[index] = !this.expanded[index];
-    this.hide[index] = !this.hide[index];
-  }
+  // }
+
+  // ishide(index: number): boolean {
+  //   return this.hide[index];
+  // }
+
+  // togglePanel(index: number): void {
+  //   this.expanded[index] = !this.expanded[index];
+  //   this.hide[index] = !this.hide[index];
+  // }
 
   onSubmit() {
     this.filter_items = this.filterfoods(this.searchControl.value);
@@ -136,5 +147,13 @@ export class SearchComponent implements OnInit{
 
   openAddedToCartSnackBar(response: any) {
     this.toastr.success(response.name+' Added to Cart', 'Success');
+  }
+
+  scrollToSection() {
+    const sectionElement = this.elementRef.nativeElement.querySelector('#main');
+    if (sectionElement) {
+      sectionElement.scrollIntoView({ behavior: 'smooth' });
+      console.log("randi ra randi")
+    }
   }
 }

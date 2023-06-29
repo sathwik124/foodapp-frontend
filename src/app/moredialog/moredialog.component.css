@@ -1,5 +1,5 @@
 img {
-    height: 100%;
+    height: 330px;
     width: 100%;
 }
 
@@ -13,9 +13,10 @@ img {
 }
 
 .content {
-    height: 100%;
+    height: 330px;
     width: 50%;
     padding: 15px;
+    overflow-y: auto;
 }
 
 .content h1 {
@@ -26,3 +27,54 @@ img {
 .content p {
     font-weight: 500;
 }
+
+.star-rating {
+    display: inline-block;
+    font-size: 2rem;
+    color: orange;
+ }
+
+ .star-rating::before {
+    content: '\2605';
+ }
+
+ .empty-star-rating {
+    color: #ccc;
+ }
+
+  
+  #drop {
+    width: 70px;
+    height: 75px;
+    margin-left: 10px;
+  }
+
+  .review-card {
+    background-color: palegoldenrod;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 16px;
+  }
+  
+  .user-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .review-text {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .posrev {
+    background: rgb(194, 228, 240);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+  }

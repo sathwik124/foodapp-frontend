@@ -12,6 +12,9 @@ export class MoredialogComponent implements OnInit {
   product_title: string;
   desc: string;
   rating: number;
+  selectedValue: number = 0;
+  dropdownOptions: number[] = [0, 1, 2, 3, 4, 5];
+  enteredText: string = '';
 
   constructor(public dialogref: MatDialogRef<MoredialogComponent>, @Inject(MAT_DIALOG_DATA)
   public data: any) {
@@ -24,6 +27,14 @@ export class MoredialogComponent implements OnInit {
 
   ngOnInit(): void {
     
+  }
+
+  onSubmit() {
+    console.log(this.selectedValue);
+  }
+
+  onaction() {
+    console.log(this.enteredText);
   }
 
 }

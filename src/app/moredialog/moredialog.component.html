@@ -6,7 +6,50 @@
         <div class="title">
             <h1>{{product_title}}</h1>
         </div>
+        <div class="stars">
+            <div class="star-rating"
+                [ngClass]="{'empty-star-rating': 3 < 1}">
+            </div>
+            <div class="star-rating"
+                [ngClass]="{'empty-star-rating': 3 < 2}">
+            </div>
+            <div class="star-rating"
+                [ngClass]="{'empty-star-rating': 4 < 3}">
+            </div>
+            <div class="star-rating"
+                [ngClass]="{'empty-star-rating': 4 < 4}">
+            </div>
+            <div class="star-rating"
+                [ngClass]="{'empty-star-rating': 4 < 5}">
+            </div>
+            <!-- <span style="font-size: 1rem;"> ({{ product.productRating | number: '1.1-1' }})</span>-->
+        </div>
         <h2>Description:</h2>
         <p>{{desc}}</p>
+        <button mat-raised-button color="primary" [disabled]="!selectedValue" (click)="onSubmit()">Give Rating</button>
+        <mat-form-field id="drop">
+            <mat-select placeholder="Select a value" [(ngModel)]="selectedValue" name="selectedValue" required>
+              <mat-option *ngFor="let option of dropdownOptions" [value]="option">{{ option }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div class="posrev">
+            <mat-form-field id="text">
+                <input matInput type="text" placeholder="enter your review" [(ngModel)]="enteredText" name="enteredText" required/>
+            </mat-form-field>
+            <button mat-raised-button color="primary" [disabled]="!enteredText" (click)="onaction()">Post Review</button>
+        </div>
+        <h2>Reviews</h2>
+        <div class="review-card">
+            <h3 class="user-name">subbu12</h3>
+            <p class="review-text">
+              very tasty and satisfying
+            </p>
+        </div>
+        <div class="review-card">
+            <h3 class="user-name">sanjay</h3>
+            <p class="review-text">
+              vere levellllll!!!!!!!
+            </p>
+        </div>
     </div>
 </div>

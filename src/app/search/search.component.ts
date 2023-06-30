@@ -25,6 +25,7 @@ export class SearchComponent implements OnInit{
   hide: boolean[] = [];
   options: string[] = ["All", "Biryani", "Pizza", "Chinese"];
   selectedopt: string = "";
+  rates:number = 0;
   citem: cartitem = {
     userid: "",
     cid: 0,
@@ -95,12 +96,16 @@ export class SearchComponent implements OnInit{
   }
 
   openmore(item: food): void {
+    this.productService.getrating(item.fid).subscribe(Response => {
+      this.rates = Response;
+    })
     const dialogRef = this.dialog.open(MoredialogComponent,{
       width: '650px',
       data: { imgsrc: item.pic,
               product_title: item.name,
               desc: item.desc,
-              rating: 5 }
+              rating: this.rates,
+              foodid: item.fid }
     });
   }
 

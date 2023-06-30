@@ -8,19 +8,19 @@
         </div>
         <div class="stars">
             <div class="star-rating"
-                [ngClass]="{'empty-star-rating': 3 < 1}">
+                [ngClass]="{'empty-star-rating': rating < 1}">
             </div>
             <div class="star-rating"
-                [ngClass]="{'empty-star-rating': 3 < 2}">
+                [ngClass]="{'empty-star-rating': rating < 2}">
             </div>
             <div class="star-rating"
-                [ngClass]="{'empty-star-rating': 4 < 3}">
+                [ngClass]="{'empty-star-rating': rating < 3}">
             </div>
             <div class="star-rating"
-                [ngClass]="{'empty-star-rating': 4 < 4}">
+                [ngClass]="{'empty-star-rating': rating < 4}">
             </div>
             <div class="star-rating"
-                [ngClass]="{'empty-star-rating': 4 < 5}">
+                [ngClass]="{'empty-star-rating': rating < 5}">
             </div>
             <!-- <span style="font-size: 1rem;"> ({{ product.productRating | number: '1.1-1' }})</span>-->
         </div>
@@ -39,16 +39,28 @@
             <button mat-raised-button color="primary" [disabled]="!enteredText" (click)="onaction()">Post Review</button>
         </div>
         <h2>Reviews</h2>
-        <div class="review-card">
-            <h3 class="user-name">subbu12</h3>
+        <div class="review-card" *ngFor="let rev of revs">
+            <h3 class="user-name">{{rev.userid}}</h3>
+            <div class="stars-1">
+                <div class="star-rating-1"
+                    [ngClass]="{'empty-star-rating': [rev.rate] < [1]}">
+                </div>
+                <div class="star-rating-1"
+                    [ngClass]="{'empty-star-rating': [rev.rate] < [2]}">
+                </div>
+                <div class="star-rating-1"
+                    [ngClass]="{'empty-star-rating': [rev.rate] < [3]}">
+                </div>
+                <div class="star-rating-1"
+                    [ngClass]="{'empty-star-rating': [rev.rate] < [4]}">
+                </div>
+                <div class="star-rating-1"
+                    [ngClass]="{'empty-star-rating': [rev.rate] < [5]}">
+                </div>
+                <!-- <span style="font-size: 1rem;"> ({{ product.productRating | number: '1.1-1' }})</span>-->
+            </div>
             <p class="review-text">
-              very tasty and satisfying
-            </p>
-        </div>
-        <div class="review-card">
-            <h3 class="user-name">sanjay</h3>
-            <p class="review-text">
-              vere levellllll!!!!!!!
+              {{rev.revdesc}}
             </p>
         </div>
     </div>

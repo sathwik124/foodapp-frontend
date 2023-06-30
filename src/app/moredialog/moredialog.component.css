@@ -38,6 +38,16 @@ img {
     content: '\2605';
  }
 
+ .star-rating-1 {
+  display: inline-block;
+  font-size: 1rem;
+  color: orange;
+}
+
+.star-rating-1::before {
+  content: '\2605';
+}
+
  .empty-star-rating {
     color: #ccc;
  }

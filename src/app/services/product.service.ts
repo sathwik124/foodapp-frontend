@@ -2,6 +2,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { cartitem } from 'cartitem';
 import { food } from 'food';
+import { review } from 'review';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 
 const httpOptions = {
@@ -19,6 +20,19 @@ export class ProductService {
   cartcount$ = this.cartcountsub.asObservable();
 
   constructor(private http: HttpClient) { }
+
+
+  getreviews(id: number): Observable<review[]> {
+    return this.http.get<review[]>(this.baseUrl+'allreviews/'+`${id}`);
+  }
+
+  addreview(ritem: review): Observable<review> {
+    return this.http.post<review>(this.baseUrl+'putreview/',ritem,httpOptions);
+  }
+
+  getrating(id: number): Observable<number> {
+    return this.http.get<number>(this.baseUrl+'rate/'+`${id}`);
+  }
 
   getfoods(): Observable<food[]> {
     return this.http.get<food[]>(this.baseUrl);
